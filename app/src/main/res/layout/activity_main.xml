@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.practice.roomdatabasepractice.MainActivityViewModel" />
+    </data>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/subscriber_name"
+        android:hint="Subscriber's name"
+        android:text="@={viewModel.inputName}"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/subscriber_email"
+        android:hint="Subscriber's email"
+        android:text="@={viewModel.inputEmail}"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/save_button"
+            android:onClick="@{()->viewModel.saveOrUpdate()}"
+            android:text="@{viewModel.saveOrUpdateButtonText}"
+            android:layout_marginRight="5dp"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->viewModel.deleteData()}"
+            android:text="@{viewModel.clearAllOrDeleteButtonText}"
+            android:id="@+id/clear_all_button"
+            />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/subscriber_recyclerview"
+        />
+</LinearLayout>
+</layout>
